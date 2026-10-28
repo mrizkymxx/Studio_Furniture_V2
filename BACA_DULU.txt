@@ -1,0 +1,25 @@
+STUDIO FURNITURE V2 (LIFESTYLE 16:9)
+=====================================
+
+Studio baru yang bersih, super ringan, dan warna akurat (PBR Netral) untuk menghasilkan thumbnail produk 16:9 konsisten bagi Webapp Server Render & AI Gemini/NanoBanana.
+
+CARA MENGGUNAKAN:
+1. Klik dua kali MULAI_STUDIO.cmd.
+2. Blender akan membuka Studio V2. Di panel sebelah kanan (tab "Lifestyle Studio"):
+   - Klik "Pilih File Produk (.blend)" -> pilih file produk dari folder 02_PRODUK.
+   - Produk otomatis ditempatkan di atas lantai (Z=0), dipusatkan, dan kamera adaptif menyesuaikan ukurannya.
+   - Material kayu asli produk 100% dipertahankan (tidak dirusak atau diubah warna).
+3. Klik tombol sudut kamera untuk cek framing (Hero, Depan, 2-Point Vertikal Lurus, Close-Up).
+4. Klik "Simpan & Pack untuk Webapp":
+   - Semua gambar tekstur otomatis ter-pack ke dalam file .blend.
+   - File tersimpan di folder 03_PROYEK/ dan folder langsung terbuka otomatis.
+5. Upload file .blend dari 03_PROYEK ke Webapp Server Anda untuk di-render.
+6. Hasil render 16:9 dari server siap dimasukkan ke Gemini/NanoBanana menggunakan panduan di 05_PANDUAN/ALUR_KERJA_GEMINI_LIFESTYLE.md.
+
+STRUKTUR FOLDER:
+01_STUDIO        Template master studio 16:9 (Studio_Lifestyle.blend).
+02_PRODUK        Tempat meletakkan file produk .blend yang ingin diproses.
+03_PROYEK        File sesi yang sudah di-pack, siap di-upload ke webapp server.
+04_HASIL_RENDER  Folder penyimpanan hasil render (jika menjalankan render lokal).
+05_PANDUAN       SOP kerja tim dan template Master Prompt AI Gemini.
+99_SISTEM        Skrip generator, UI addon ringan, dan engine render server.

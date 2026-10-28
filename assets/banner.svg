@@ -1,0 +1,252 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 360" width="100%" height="100%">
+  <defs>
+    <!-- AutoCAD Model Space Grid Pattern -->
+    <pattern id="cadGrid10" width="10" height="10" patternUnits="userSpaceOnUse">
+      <path d="M 10 0 L 0 0 0 10" fill="none" stroke="#252525" stroke-width="0.5" />
+    </pattern>
+    <pattern id="cadGrid50" width="50" height="50" patternUnits="userSpaceOnUse">
+      <rect width="50" height="50" fill="url(#cadGrid10)" />
+      <path d="M 50 0 L 0 0 0 50" fill="none" stroke="#2e2e2e" stroke-width="0.8" />
+    </pattern>
+
+    <!-- AutoCAD Architectural Ticks for Dimensions -->
+    <marker id="cadTick" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6">
+      <line x1="2" y1="8" x2="8" y2="2" stroke="#00e676" stroke-width="1.8" />
+    </marker>
+    <marker id="cadTickCyan" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6">
+      <line x1="2" y1="8" x2="8" y2="2" stroke="#00e5ff" stroke-width="1.8" />
+    </marker>
+  </defs>
+
+  <style>
+    /* Pure CAD Vector Animations - No Neon, Zero Glow */
+    @keyframes moveCrosshair {
+      0% { transform: translate(240px, 160px); }
+      30% { transform: translate(580px, 95px); }
+      60% { transform: translate(890px, 180px); }
+      85% { transform: translate(420px, 220px); }
+      100% { transform: translate(240px, 160px); }
+    }
+    @keyframes blinkPrompt {
+      0%, 49% { opacity: 1; }
+      50%, 100% { opacity: 0; }
+    }
+    @keyframes drawOutline {
+      0% { stroke-dashoffset: 400; }
+      100% { stroke-dashoffset: 0; }
+    }
+    @keyframes snapPulse {
+      0%, 100% { transform: scale(1); opacity: 0.9; }
+      50% { transform: scale(1.3); opacity: 1; }
+    }
+
+    .cad-mono {
+      font-family: 'Consolas', 'Courier New', 'ISOCPEUR', monospace;
+    }
+    .crosshair-rig {
+      animation: moveCrosshair 14s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite;
+    }
+    .cmd-cursor {
+      animation: blinkPrompt 1s step-end infinite;
+    }
+    .snap-node {
+      transform-origin: center;
+      animation: snapPulse 2s ease-in-out infinite;
+    }
+    .centerline {
+      stroke: #ff3b30;
+      stroke-width: 0.8;
+      stroke-dasharray: 18 4 3 4;
+    }
+    .hiddenline {
+      stroke: #78909c;
+      stroke-width: 0.9;
+      stroke-dasharray: 5 4;
+    }
+  </style>
+
+  <!-- AutoCAD Model Space Dark Charcoal Background -->
+  <rect width="1200" height="360" fill="#1b1c1e" />
+  <rect width="1200" height="360" fill="url(#cadGrid50)" />
+
+  <!-- AutoCAD Viewport Outline Frame -->
+  <rect x="8" y="8" width="1184" height="344" fill="none" stroke="#33383f" stroke-width="1" />
+
+  <!-- Top Viewport Control Bar (AutoCAD Standard: [Top] [2D Wireframe]) -->
+  <g transform="translate(18, 24)" class="cad-mono" font-size="10">
+    <text x="0" y="0" fill="#78909c">[-][Top][2D Wireframe]</text>
+    <text x="960" y="0" fill="#546e7a">SNAP: ON  GRID: ON  ORTHO: ON  POLAR: OFF</text>
+  </g>
+
+  <!-- ==================== LEFT: 2D ARCHITECTURAL FRONT ELEVATION ==================== -->
+  <g transform="translate(60, 40)">
+    <text x="10" y="16" class="cad-mono" font-size="11" fill="#ffd600" font-weight="bold">FRONT ELEVATION - SCALE 1:20</text>
+    <text x="10" y="30" class="cad-mono" font-size="9" fill="#78909c">LAYER: 01_FURNITURE_WOOD</text>
+
+    <!-- Base Floor Line -->
+    <line x1="-20" y1="210" x2="260" y2="210" stroke="#455a64" stroke-width="1.2" />
+    <text x="268" y="213" class="cad-mono" font-size="9" fill="#78909c">Z = 0.00 (DATUM)</text>
+
+    <!-- Main Cabinet Outer Frame (White 0.35mm lineweight) -->
+    <rect x="20" y="60" width="180" height="135" fill="none" stroke="#ffffff" stroke-width="1.8" />
+    <!-- Overhang Top Board -->
+    <polygon points="12,60 208,60 202,52 18,52" fill="none" stroke="#ffffff" stroke-width="1.6" />
+    <!-- Plinth Base -->
+    <rect x="30" y="195" width="160" height="15" fill="none" stroke="#ffffff" stroke-width="1.4" />
+
+    <!-- Drawer 1 (Top) -->
+    <rect x="28" y="68" width="164" height="54" fill="none" stroke="#cfd8dc" stroke-width="1.2" />
+    <line x1="90" y1="95" x2="130" y2="95" stroke="#00e5ff" stroke-width="2" />
+    <!-- Drawer 2 (Bottom) -->
+    <rect x="28" y="128" width="164" height="60" fill="none" stroke="#cfd8dc" stroke-width="1.2" />
+    <line x1="90" y1="158" x2="130" y2="158" stroke="#00e5ff" stroke-width="2" />
+
+    <!-- Center Symmetry Line -->
+    <line x1="110" y1="40" x2="110" y2="225" class="centerline" />
+
+    <!-- AutoCAD Green Dimension Lines (Architectural Tick Markers) -->
+    <!-- Width Dimension -->
+    <line x1="20" y1="230" x2="200" y2="230" stroke="#00e676" stroke-width="1" marker-start="url(#cadTick)" marker-end="url(#cadTick)" />
+    <line x1="20" y1="198" x2="20" y2="236" stroke="#00e676" stroke-width="0.6" />
+    <line x1="200" y1="198" x2="200" y2="236" stroke="#00e676" stroke-width="0.6" />
+    <text x="110" y="244" class="cad-mono" font-size="10" fill="#00e676" text-anchor="middle" font-weight="bold">650.00</text>
+
+    <!-- Height Dimension -->
+    <line x1="218" y1="52" x2="218" y2="210" stroke="#00e676" stroke-width="1" marker-start="url(#cadTick)" marker-end="url(#cadTick)" />
+    <line x1="204" y1="52" x2="224" y2="52" stroke="#00e676" stroke-width="0.6" />
+    <line x1="192" y1="210" x2="224" y2="210" stroke="#00e676" stroke-width="0.6" />
+    <text x="226" y="135" class="cad-mono" font-size="10" fill="#00e676" font-weight="bold">540.00</text>
+  </g>
+
+  <!-- ==================== CENTER: SYSTEM SPEC & TITLE BLOCK ==================== -->
+  <g transform="translate(390, 40)">
+    <!-- Viewport Title -->
+    <text x="0" y="16" class="cad-mono" font-size="15" fill="#ffffff" font-weight="bold" letter-spacing="1">
+      STUDIO FURNITURE V2 <tspan fill="#00e5ff">[CAD // BLENDER]</tspan>
+    </text>
+    <text x="0" y="32" class="cad-mono" font-size="10" fill="#90a4ae">AUTOMATED PIPELINE: 2D/3D DWG -> BLENDER 4.x PBR</text>
+
+    <!-- Drafting Data Table Box -->
+    <g transform="translate(0, 48)">
+      <rect x="0" y="0" width="370" height="155" fill="#141517" stroke="#37474f" stroke-width="1" />
+
+      <!-- Table Rows -->
+      <line x1="0" y1="31" x2="370" y2="31" stroke="#263238" stroke-width="1" />
+      <line x1="0" y1="62" x2="370" y2="62" stroke="#263238" stroke-width="1" />
+      <line x1="0" y1="93" x2="370" y2="93" stroke="#263238" stroke-width="1" />
+      <line x1="0" y1="124" x2="370" y2="124" stroke="#263238" stroke-width="1" />
+      <line x1="130" y1="0" x2="130" y2="155" stroke="#263238" stroke-width="1" />
+
+      <!-- Row Items -->
+      <text x="12" y="21" class="cad-mono" font-size="10" fill="#ffd600">INPUT SOURCE</text>
+      <text x="140" y="21" class="cad-mono" font-size="10" fill="#eceff1">AutoCAD .DWG / 3D Solids</text>
+
+      <text x="12" y="52" class="cad-mono" font-size="10" fill="#ffd600">3D ENGINE</text>
+      <text x="140" y="52" class="cad-mono" font-size="10" fill="#eceff1">Blender 4.x / Cycles PBR</text>
+
+      <text x="12" y="83" class="cad-mono" font-size="10" fill="#ffd600">AUTO CAMERA</text>
+      <text x="140" y="83" class="cad-mono" font-size="10" fill="#00e676">BBox Adaptive (4 Angles)</text>
+
+      <text x="12" y="114" class="cad-mono" font-size="10" fill="#ffd600">OUTPUT RATIO</text>
+      <text x="140" y="114" class="cad-mono" font-size="10" fill="#00e5ff">16:9 Neutral Studio Render</text>
+
+      <text x="12" y="145" class="cad-mono" font-size="10" fill="#ffd600">AI WORKFLOW</text>
+      <text x="140" y="145" class="cad-mono" font-size="10" fill="#ffb74d">Gemini / NanoBanana Vision</text>
+    </g>
+
+    <!-- Technical Drawing Notes / Leader Line -->
+    <g transform="translate(0, 215)">
+      <line x1="0" y1="10" x2="60" y2="10" stroke="#00e5ff" stroke-width="0.8" />
+      <line x1="60" y1="10" x2="80" y2="25" stroke="#00e5ff" stroke-width="0.8" />
+      <line x1="80" y1="25" x2="365" y2="25" stroke="#00e5ff" stroke-width="0.8" />
+      <text x="85" y="20" class="cad-mono" font-size="9" fill="#00e5ff">NOTES: ALL WOOD GRAIN TEXTURES PACKED AUTOMATICALLY</text>
+    </g>
+  </g>
+
+  <!-- ==================== RIGHT: 3D AXONOMETRIC ISOMETRIC WIREFRAME ==================== -->
+  <g transform="translate(810, 40)">
+    <text x="10" y="16" class="cad-mono" font-size="11" fill="#ffd600" font-weight="bold">3D ISOMETRIC PROJECTION</text>
+    <text x="10" y="30" class="cad-mono" font-size="9" fill="#78909c">ANGLE: 30° / 30° AXONOMETRIC</text>
+
+    <!-- Isometric Furniture Wireframe (Clean Technical Lines) -->
+    <g transform="translate(145, 120)">
+      <!-- Isometric Datum Grid -->
+      <g stroke="#263238" stroke-width="0.7">
+        <line x1="-120" y1="0" x2="0" y2="69" />
+        <line x1="0" y1="-69" x2="120" y2="0" />
+        <line x1="-120" y1="0" x2="0" y2="-69" />
+        <line x1="0" y1="69" x2="120" y2="0" />
+      </g>
+
+      <!-- Isometric Solid Geometry (White 0.35mm line) -->
+      <!-- Top Face -->
+      <polygon points="0,-65 80,-19 0,27 -80,-19" fill="#141920" stroke="#ffffff" stroke-width="1.8" />
+
+      <!-- Left Side Face -->
+      <polygon points="-80,-19 0,27 0,95 -80,49" fill="#10141a" stroke="#ffffff" stroke-width="1.6" />
+
+      <!-- Right Side Face -->
+      <polygon points="0,27 80,-19 80,49 0,95" fill="#0d1117" stroke="#ffffff" stroke-width="1.6" />
+
+      <!-- Internal Drawers -->
+      <line x1="-80" y1="15" x2="0" y2="61" stroke="#cfd8dc" stroke-width="1.2" />
+      <line x1="0" y1="61" x2="80" y2="15" stroke="#cfd8dc" stroke-width="1.2" />
+      <!-- Handles -->
+      <line x1="-45" y1="6" x2="-35" y2="12" stroke="#00e5ff" stroke-width="2.5" />
+      <line x1="-45" y1="38" x2="-35" y2="44" stroke="#00e5ff" stroke-width="2.5" />
+
+      <!-- Hidden Lines (Rear Edges) -->
+      <line x1="0" y1="-65" x2="0" y2="3" class="hiddenline" />
+      <line x1="-80" y1="49" x2="0" y2="3" class="hiddenline" />
+      <line x1="80" y1="49" x2="0" y2="3" class="hiddenline" />
+
+      <!-- Geometric Snap Points (Green CAD Osnap Squares) -->
+      <rect x="-4" y="-69" width="8" height="8" fill="none" stroke="#00e676" stroke-width="1.2" />
+      <rect x="76" y="-23" width="8" height="8" fill="none" stroke="#00e676" stroke-width="1.2" />
+      <rect x="-4" y="23" width="8" height="8" fill="none" stroke="#00e676" stroke-width="1.2" />
+      <rect x="-84" y="-23" width="8" height="8" fill="none" stroke="#00e676" stroke-width="1.2" />
+      <rect x="-4" y="91" width="8" height="8" fill="none" stroke="#00e676" stroke-width="1.2" />
+
+      <!-- Isometric Dimension Callout -->
+      <line x1="88" y1="-19" x2="88" y2="49" stroke="#00e676" stroke-width="0.9" marker-start="url(#cadTick)" marker-end="url(#cadTick)" />
+      <text x="96" y="18" class="cad-mono" font-size="9" fill="#00e676" font-weight="bold">H: 540</text>
+    </g>
+  </g>
+
+  <!-- ==================== BOTTOM: AUTOCAD COMMAND LINE INTERFACE ==================== -->
+  <g transform="translate(18, 298)">
+    <rect x="0" y="0" width="1164" height="46" fill="#0f1011" stroke="#263238" stroke-width="1" />
+    <!-- Command Line History -->
+    <text x="14" y="16" class="cad-mono" font-size="10" fill="#78909c">Command: _ATTACH_DWG "02_PRODUK/Nakas_Oak_2Laci.dwg" ... Model Loaded (2 Solid Meshes)</text>
+    <text x="14" y="32" class="cad-mono" font-size="10" fill="#00e5ff">Command: _STUDIO_V2_PACK --preset 16:9_LIFESTYLE --cycles-pbr</text>
+    <text x="445" y="32" class="cad-mono" font-size="10" fill="#00e676" font-weight="bold">[READY]</text>
+    <text x="500" y="32" class="cad-mono cmd-cursor" font-size="12" fill="#ffffff" font-weight="bold">_</text>
+
+    <!-- Bottom Right Status Toggles -->
+    <text x="890" y="32" class="cad-mono" font-size="9" fill="#546e7a">MODEL | TILE | ORTHO | OSNAP</text>
+  </g>
+
+  <!-- ==================== AUTOCAD UCS ICON (BOTTOM-LEFT) ==================== -->
+  <g transform="translate(42, 265)">
+    <line x1="0" y1="0" x2="28" y2="0" stroke="#ff3b30" stroke-width="1.8" />
+    <line x1="0" y1="0" x2="0" y2="-28" stroke="#00e676" stroke-width="1.8" />
+    <rect x="-3" y="-3" width="6" height="6" fill="#ffffff" />
+    <text x="32" y="4" class="cad-mono" font-size="9" fill="#ff3b30" font-weight="bold">X</text>
+    <text x="-4" y="-32" class="cad-mono" font-size="9" fill="#00e676" font-weight="bold">Y</text>
+    <text x="-16" y="15" class="cad-mono" font-size="8" fill="#78909c">WCS</text>
+  </g>
+
+  <!-- ==================== ANIMATED CAD CROSSHAIR CURSOR ==================== -->
+  <g class="crosshair-rig" pointer-events="none">
+    <!-- Infinite CAD Crosshairs -->
+    <line x1="-1200" y1="0" x2="1200" y2="0" stroke="#ffffff" stroke-width="0.6" stroke-opacity="0.6" />
+    <line x1="0" y1="-360" x2="0" y2="360" stroke="#ffffff" stroke-width="0.6" stroke-opacity="0.6" />
+    <!-- Central Pickbox Square -->
+    <rect x="-4" y="-4" width="8" height="8" fill="none" stroke="#ffffff" stroke-width="1" />
+    <!-- Dynamic Osnap Marker when snapping -->
+    <rect x="-7" y="-7" width="14" height="14" fill="none" stroke="#ffeb3b" stroke-width="0.8" stroke-dasharray="2 2" />
+    <!-- Coordinate Tag Box -->
+    <rect x="10" y="10" width="135" height="18" fill="#0d1117" stroke="#37474f" stroke-width="0.8" opacity="0.9" />
+    <text x="16" y="23" class="cad-mono" font-size="9" fill="#00e5ff">650.00, 540.00, 0.00</text>
+  </g>
+</svg>
